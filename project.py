@@ -1,5 +1,6 @@
 import math
 import random
+from turtle import pos
 
 import pygame, sys
 from pygame.locals import *
@@ -7,71 +8,100 @@ from pygame.locals import *
 import random as r
 
 pygame.init()
-FPS = 30
+pygame.font.init()
+FPS = 60
 FramePerSec = pygame.time.Clock()
 
 BLACK = (0, 0, 0)
 red=(255,0,0)
 
+ground=800
+
 DIS = pygame.display.set_mode((1000, 1000))
 DIS.fill(BLACK)
 
-pos=[0,200]
+pos=[r.randint(200,800),r.randint(200,800)]
 class ball:
-    def __init__(self,pos,vel):
-        self.pos=pos
-        self.vel=vel
+    def __init__(self,p,v):
+        self.p=p
+        self.v=v
+        self.grounded=False
+        self.still=False
+        self.c=0
+        
+    
+    def draw(self):
+        global DIS,red
+        pygame.draw.circle(DIS,red,(self.p),5)
     def moment(self):
-        
-        if self.pos[1]>=ground and self.v[0]>1:
-            self.v[0]=-self.v[0]+2+int(v*.3)
-        self.pos[1]+=self.v[0]
-        if pos[1]>=ground+1 and self.v[0]<1:
-            self.v[0]=0
-            pos[1]=ground
+        if self.still==False:
+                x=self.v[0]
+                self.p[0]+=self.v[0]
+                self.c+=1
+                if self.grounded==True:
+                    if self.c==10:
+                        self.c=0
+                        if x>0:
+                            self.v[0]-=1
+                        if x<0:
+                            self.v[0]+=1
+                        if x==0:
+                            self.still=True
+                    
+                
+            
+    def gravity(self):
+        global ground
+      #  self.p[1]+=1
+        if self.grounded==False:
+            if self.p[1]>=ground and self.v[1]>1:
+                self.v[1]=-(self.v[1]*.5)
+            self.p[1]+=self.v[1]
+            if self.p[1]>=ground and self.v[1]<2 and self.v[1]>-2:
+                self.grounded=True 
+            else:
+                 self.v[1]+=1  
         else:
-           v+=1
+            self.p[1]=ground      
 
+def randompos(l,h):
+    return [r.randint(l,h),r.randint(l,h)]
+balls=[]
+for i in range(1):
+    v=[r.randint(-3,3),0]
+    p=randompos(200,800)
+    balls.append(ball(p,v))
+text=[]
+my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
-def redraw():
-    global pos
-    pygame.draw.circle(DIS,red,(pos),5)
-        
-def gravity():
-    global pos,v,ground,v2,c
-    if pos[1]>=ground and v>1:
-        v=-v+2+int(v*.3)
-    pos[1]+=v
-    if pos[1]>=ground+1 and v<1:
-        v=0
-        pos[1]=ground
-        c+=1
-        if c==4:
-            if v2>0:
-                v2-=1
-            elif v2<0:
-                v2+=1
-            c=0
-    else:
-        v+=1
-
-redraw()
-ground=940
-v=0
-v2=2
-c=0
+my_font = pygame.font.SysFont('Comic Sans MS', 30)
+    
+    
 while True:
-   # DIS.fill(BLACK)
-  #  gravity()
-    pygame.display.update()
-    pos[0]+=v2
+    DIS.fill(BLACK)
+    pygame.font.init() # you have to call this at the start, 
+                   # if you want to use this module.
+    s=str(balls[0].grounded)+str(balls[0].v[0])
+    text_surface = my_font.render(s, False, (255, 0, 0))
+    DIS.blit(text_surface, (100,100))
+
+    
+
+
+    for i in balls:
+        i.gravity()
+        i.moment()
+        i.draw()
+        
+
+
+        
    
     
+
     
-
-    gravity()
-    redraw()
-
+    
+    pygame.display.update()
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
