@@ -18,8 +18,25 @@ https://www.youtube.com/watch?v=VWivmi9j608, this way of generating "creatures" 
 
 I started developing an enginge in pygame for this.I could have used a prebuilt engine for this, which would have been a much smarter idea, since I only wanted to create a genetic algorithom for creatures,but I started making one in python ive started about a week ago and its clear to me now that this will be 75% of the work for the project. creating a world for creatures to inhabit.
 
-for the program the creatures will be made of several classes.
+for the program the creatures will be made of several classes.I drew a diagram of the class hierachy .
 https://github.com/zzzzzzzzzzzzzzzzzzzzl/project/blob/main/creature_class_hierarchy.png
+this was my first time using classes as the main part of one of my programs, before this I didnt really have a deep understanding of them but know I feel much more comfortable using them, before this I would have used a bunch of lists instead, but I could always get away with it because the programs would contain much fewer variables than this one. 
+
+
+https://github.com/zzzzzzzzzzzzzzzzzzzzl/project/blob/main/classes.png example of what each class will controll
+
+The creature class will contain all of the other classes 
+
+The limb class will create the limbs of the creature.
+these "limbs" will just be regular pollygons and iregular pollygons, each polygon will be made of 1 or for each corner.
+and can contain hinges inside them 
+
+the bone class will connect 2 points on a limb. it will always maintain the same distance between the 2 points.
+
+the muscle class will connect 2 points on a limb. It will expand and contract. 
+
+a point is just a x,y coodernate that exists on t
+
 
 
 I know that python is not the best when it comes to speed but its the laungauge that im most comfortable with 
