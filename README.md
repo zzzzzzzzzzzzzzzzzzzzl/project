@@ -19,6 +19,7 @@ https://www.youtube.com/watch?v=VWivmi9j608, this way of generating "creatures" 
 I started developing an enginge in pygame for this.I could have used a prebuilt engine for this, which would have been a much smarter idea, since I only wanted to create a genetic algorithom for creatures,but I started making one in python ive started about a week ago and its clear to me now that this will be 75% of the work for the project. creating a world for creatures to inhabit.
 
 for the program the creatures will be made of several classes.
+https://github.com/zzzzzzzzzzzzzzzzzzzzl/project/blob/main/creature_class_hierarchy.png
 
 
 I know that python is not the best when it comes to speed but its the laungauge that im most comfortable with 
