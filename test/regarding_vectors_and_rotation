@@ -1,0 +1,46 @@
+from cmath import atan
+import math
+
+def eww(r,p):
+        points=[]
+        for i in range(p):#64# this part will create the shape
+            j=(i)*2*math.pi/p
+            rot=j
+            x=r*math.cos(j)
+            y=r*math.sin(j)
+            points.append([x,y,((j)/(2*math.pi))*360])
+        return points
+p=10
+r=5
+#x=getpos(r,p)
+    
+def getpos (r,j):
+        return [r*math.cos(j),r*math.sin(j),((j)/(2*math.pi))*360]
+#print(getpos(5,1))
+def getrot(p):
+            add=0
+            x,y=p
+            for i in [x,y]:
+                if i==0:
+                 x+=0.001
+                 y+=0.001
+            if x<0 and y>0:
+                add=180
+            if x<0 and y<0:
+                add=180
+            if x>0 and y<0:
+                add=360
+           # print(x,y)
+            j=math.atan(y/x)
+            return ((j/(2*math.pi))*360)+add
+#print(getrot([-1,1]))
+points=[]
+for i in (eww(10,17)):
+    points.append(i)
+for i in points:
+    print(i)
+for i in points:
+    a=getrot((i[0],i[1]))
+    print(a)
+        
+            
