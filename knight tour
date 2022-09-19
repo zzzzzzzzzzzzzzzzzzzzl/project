@@ -1,0 +1,140 @@
+#just going to redo some stuff .
+#using the "hinge" variable from the last 
+import math
+from multiprocessing import BoundedSemaphore
+import random
+import pygame, sys
+from pygame.locals import *
+import random as r
+
+pygame.init()
+pygame.font.init()
+BLACK = (0, 0, 0)
+red=(0,0,0)
+green=(250,250,250)
+red2=(255,0,0)
+
+fgreen=(0,250,100)
+fred=fgreen
+blue=(0,50,150)
+FPS = 30
+DIS = pygame.display.set_mode((1000, 1000))
+FramePerSec = pygame.time.Clock()
+board=[]
+taken=[]
+for i in range(8):
+    for j in range(8):
+        board.append([i,j])
+
+
+def drawboard():
+    for i in board:
+        if i[0]%2==0:
+            if i[1]%2==0:
+                pygame.draw.rect(DIS,green,(15+i[0]*30,15+i[1]*30,30,30))   
+            else:
+                pygame.draw.rect(DIS,red,(15+i[0]*30,15+i[1]*30,30,30))
+        elif i[1]%2==0:
+            pygame.draw.rect(DIS,red,(15+i[0]*30,15+i[1]*30,30,30))  
+        else:
+            pygame.draw.rect(DIS,green,(15+i[0]*30,15+i[1]*30,30,30)) 
+
+
+class knight:
+    def __init__(self) -> None:
+        self.p=[r.randint(0,7),r.randint(0,7)]
+        print(self.p)
+        self.taken=[]
+    def draw(self):
+        pygame.draw.rect(DIS,blue,(15+(self.p[0]*30),15+(self.p[1]*30),15,15))
+    def checktaken(self):
+        if self.p not in self.taken:
+            self.taken.append(self.p)
+    def drawtaken(self):
+        # for i in self.taken:
+        #     if i[0]%2==0:
+        #         if i[1]%2==0:
+        #             pygame.draw.rect(DIS,fgreen,(15+i[0]*30,15+i[1]*30,30,30))   
+        #         else:
+        #             pygame.draw.rect(DIS,fred,(15+i[0]*30,15+i[1]*30,30,30))
+        #     elif i[1]%2==0:
+        #         pygame.draw.rect(DIS,fred,(15+i[0]*30,15+i[1]*30,30,30))  
+        #     else:
+        #         pygame.draw.rect(DIS,fgreen,(15+i[0]*30,15+i[1]*30,30,30)) 
+        self.nap()
+    def valid(self):
+        m=move()
+        print(m)
+        j=[self.p[0]+m[0],self.p[1]+m[1]]
+        for i in j:
+            if i<0 or i>7:
+                return self.valid()
+        self.p=j
+    def nap(self):
+        for i in range(1,len(self.taken)):
+            pygame.draw.line(DIS,red2,(30+self.taken[i][0]*30,30+self.taken[i][1]*30),(30+self.taken[i-1][0]*30,30+self.taken[i-1][1]*30))
+        
+
+def move():
+        m=[0,"s"]
+        a=r.randint(0,3)
+        if a==0:
+            m[0]=2
+            if r.randint(0,1)==1:
+                m[1]=1
+            else:
+                m[1]=1
+        if a==1:
+            m[0]=2
+            if r.randint(0,1)==1:
+                m[1]=1
+            else:
+                m[1]=1
+        if a==2:
+            m[1]=2
+            if r.randint(0,1)==1:
+                m[0]=1
+            else:
+                m[0]=1
+        if a==3:
+            m[1]=2
+            if r.randint(0,1)==1:
+                m[0]=1
+            else:
+                m[0]=1
+        print(m)
+        return m
+
+
+
+
+    
+
+
+
+k=knight()
+
+
+while True:
+    DIS.fill(BLACK)
+    drawboard()
+    k.checktaken()
+    k.drawtaken()
+    k.draw()
+    k.valid()
+
+    
+    pygame.display.update()
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+        if event.type==pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    k.valid()
+        if event.type==pygame.KEYDOWN:
+                if event.key == pygame.K_RIGHT:
+                    k=knight()
+
+    FramePerSec.tick(FPS)
+    #def colision(self):
