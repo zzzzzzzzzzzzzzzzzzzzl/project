@@ -3,7 +3,9 @@ import requests
 from bs4 import BeautifulSoup,SoupStrainer
 import pandas as pd
 import numpy as np
-itemlist=[]
+import csv
+itemlist1=[]
+itemlist2=[]
 print('startstartstartstartstartstartstartstartstart')
 URL = "http://www.alliedfastenings.co.nz/shop/Nuts/Stainless+Steel.html"
 page = requests.get(URL)
@@ -13,7 +15,7 @@ soup = BeautifulSoup(page.content, "html.parser")
 tests=soup.find_all("div", class_="ct_dropdown ct_hide")
 
 urls=[]
-#test=soup.find("div", class_="component_ProductDisplay_MassiveSubCatMenu")
+test=soup.find("div", class_="component_ProductDisplay_MassiveSubCatMenu")
 for test in tests:
     for link in test.find_all(('a')):
         
@@ -28,26 +30,49 @@ def getsoup(URL):
     
 def getitems(soup):
     global itemlist
-    items=soup.find_all("div",class_="item-list")
+    items=soup.find("div",class_="item-list")
+    a=items.find_all('div',class_="sku")
+    b=items.find_all('h4',class_='item-title')
+    for i in range (len(b)):
+        newa=(a[i].get_text().strip())
+        newb=(b[i].get_text())
+        itemlist1.append(newa)
+        itemlist1.append(newb)
+    #print(items)
+    # for i in items:
+    #     a=i.fin
 
-    for i in items:
-        a=i.get_text().strip()
-        for i in range(500):
-            if "\n" in a:
-                a.replace("\n",'')
-            
-        itemlist.append(a)
+    #     a=i.get_text()
+    #     if a=='':
+    #         print(None)
+    #     print(a)
+    #     itemlist.append(a)
 
+    
+
+# print(itemlist)
 
 for i in urls:
     soup=getsoup(i)
     getitems(soup)
-print(itemlist)
 
-arr = np.asarray(itemlist)
-np.savetxt('sample.csv',arr, fmt = '%d', delimiter=",")  
+print(len(itemlist1))
+l1=[]
+l2=[]
+for i in range(len(itemlist1)):
+    if i%2==0:
+        l1.append(itemlist1[i])
+    else:
+        l2.append(itemlist1[i])
+arr=[]
+for i in range(len(l1)):
+    arr.append([l1[i],l2[i]])
+      
+arr=np.array(arr)
+with open('list of item', 'w', newline='') as file:
+    mywriter = csv.writer(file, delimiter=',')
+    mywriter.writerows(arr)
 
-        
 
 
 #a=results.find("div",{id:"massive-cat-wrap"})
