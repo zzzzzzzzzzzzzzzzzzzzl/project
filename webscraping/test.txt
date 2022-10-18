@@ -1,20 +1,53 @@
 from pyclbr import Class
 import requests
 from bs4 import BeautifulSoup,SoupStrainer
-
+import pandas as pd
+import numpy as np
+itemlist=[]
 print('startstartstartstartstartstartstartstartstart')
 URL = "http://www.alliedfastenings.co.nz/shop/Nuts/Stainless+Steel.html"
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
 
+tests=soup.find_all("div", class_="ct_dropdown ct_hide")
+
 urls=[]
-test=soup.find("div", class_="component_ProductDisplay_MassiveSubCatMenu")
-for link in test.find_all(('a')):
-   
-   a=link.get("href")
-   print(a)
-   urls.append(a)
+#test=soup.find("div", class_="component_ProductDisplay_MassiveSubCatMenu")
+for test in tests:
+    for link in test.find_all(('a')):
+        
+        a=link.get("href")
+        if "shop" in a:
+            urls.append(a)
+
+def getsoup(URL):
+    page = requests.get(URL)
+    soup = BeautifulSoup(page.content, "html.parser")
+    return soup
+    
+def getitems(soup):
+    global itemlist
+    items=soup.find_all("div",class_="item-list")
+
+    for i in items:
+        a=i.get_text().strip()
+        for i in range(500):
+            if "\n" in a:
+                a.replace("\n",'')
+            
+        itemlist.append(a)
+
+
+for i in urls:
+    soup=getsoup(i)
+    getitems(soup)
+print(itemlist)
+
+arr = np.asarray(itemlist)
+np.savetxt('sample.csv',arr, fmt = '%d', delimiter=",")  
+
+        
 
 
 #a=results.find("div",{id:"massive-cat-wrap"})
@@ -36,3 +69,4 @@ for link in test.find_all(('a')):
     #    # print(i)
     #     for j in i.children:
 print("done")
+
