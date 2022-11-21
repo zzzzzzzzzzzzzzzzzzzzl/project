@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="with=device-width,initial-scale=1.0">
+        <title>Website Design </title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+            </style>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  /> -->
+<script src="https://kit.fontawesome.com/e3588528c6.js" crossorigin="anonymous"></script>
+</head>
+<body>  
+    <section class="header">
+
+            <div class="text-box">
+                    <a href="index.html">slopeater.com</a>
+                    
+             
+        </div>
+        <nav>
+            <i class="fa fa-bars" onclick="showMenu()" ></i>
+        </nav>
+    </section> 
+    <div class="nav-links" id ="navLinks"> 
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <i class="fa fa-square"></i>
+            <i class="fa fa-square"></i>
+            <li><a href="about.html">Gallery</a></li>
+            <i class="fa fa-square"></i>
+            <i class="fa fa-square"></i>
+
+            <li><a href="blog.html">Projects</a></li>
+            <i class="fa fa-square"></i>
+            <i class="fa fa-square"></i>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </div>
+
+
+    <section class="context">
+        <div>this would just be a small piece of writing that <br>
+            would give context to the website and explain the <br>
+            purpose of it and why it exists.</div>
+    </section>
+    <!-- -----------footer-------- -->
+    <section class="footer">
+        <div class="line"></div>
+        <p>footer</p>
+        
+
+        </div>
+    </section>
+    </section>
+
+
+    <!-- --------------JS toggle menu -->
+    <script>
+        var navLinks=document.getElementById("navLinks");
+
+        function showMenu(){
+            navLinks.style.right="0";
+        }
+        function hideMenu(){
+            navLinks.style.right="-200px";
+        }
+
+
+    </script>
+</body>
+</html>
+
+
