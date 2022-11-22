@@ -1,0 +1,7 @@
+1.    Create responsive web pages using HTML 5 and CSS (flex and grid).
+2.    Implement the following requirements on your website:
+
+•    Minimum of three responsive web pages: Home, Tour, and Contact
+•    Navigation links will allow you to reach pages from one to the other, and all other links work reliably and consistently.
+•    The form needs to be used when you create the ‘Contact’ page
+•    You have to use images (making sure they are responsive as well) when creating ‘Home’ and ‘Tour’ pages
