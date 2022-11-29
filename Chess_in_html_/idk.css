@@ -1,0 +1,8 @@
+body{
+}
+.box{
+        height: 100px;
+}
+.square{
+    display: inline-block;
+}
