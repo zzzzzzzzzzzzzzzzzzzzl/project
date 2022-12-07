@@ -52,15 +52,6 @@ Figuring out how im going to feed the creature into an algorthom is going to be 
 
 at this point this is about everything that ive considerd for this project. 
 
-# python koans 
-
-so I did some of the python koans. some of the early questions where confusing, because of the functions to check if the answers where correct.
-
-I got through them ok once I understood what the functions where that would check the answers.
-
-I gave a link to the source to where I found the explanations on some of the questions though I wasnt very thorough, 
-some of the question I left a brief explanation on too.
-
 
 
 
