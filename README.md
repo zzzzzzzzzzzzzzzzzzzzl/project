@@ -1,18 +1,6 @@
 
 My biggest weakness is probably organisation, appologies if this is a jumble.
 
-# intro 
-
-I looked through the reasearch repositories of the others to get a clearer idea of what the asignment was.
-Most of the other people had a reflective journal. I didnt do that, Im writting all of this at 6:22 pm 2/09/2022.
-I was going to arragne all of the information that I used in a git hub repository and in this README ill reflect on some of my thoughts and 
-how i devoloped some of my ideas.
-
-Ive got a few pieces of code included which is just what ive been working on and you can sort of see the program working better with the different versions
-
-Im quite impulsive with my ideas, meaning that I generaly dont think about them for very long and I will usualy go with the first one.
-im not sure what the process of thumbnailing would be called in regards to software development, but generaly that would be a better aproach to generating ideas.
-That being said though I really like random generation So I would like that to be the core of my project.
 
 # idea
 
@@ -23,7 +11,7 @@ https://www.youtube.com/watch?v=VWivmi9j608, this way of generating "creatures" 
 
 # project
 
-I started developing an enginge in pygame for this.I could have used a prebuilt engine for this, which would have been a much smarter idea, since I only wanted to create a genetic algorithom for creatures,but I started making one in python ive started about a week ago and its clear to me now that this will be 75% of the work for the project. creating a world for creatures to inhabit.I know that python is not the best when it comes to speed but its the laungauge that im most comfortable with. and if we are clever with how we design the creatures we can probably run this at a resonable speed
+I started developing an enginge in pygame for this.I could have used a prebuilt engine for this like unity, which would have been a much smarter idea, since I only wanted to create a genetic algorithom for creatures,but I started making one in python ive started about a week ago and its clear to me now that this will be 75% of the work for the project. creating a world for creatures to inhabit.I know that python is not the best when it comes to speed but its the laungauge that im most comfortable with. and if we are clever with how we design the creatures we can probably run this at a resonable speed
 
 for the program the creatures will be made of several classes.I drew a diagram of the class hierachy .
 https://github.com/zzzzzzzzzzzzzzzzzzzzl/project/blob/main/creature%20class%20hierachy.png
