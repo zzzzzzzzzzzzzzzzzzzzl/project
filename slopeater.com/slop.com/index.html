@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="with=device-width,initial-scale=1.0">
+        <title>Website Design </title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+            </style>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"  /> -->
+<script src="https://kit.fontawesome.com/e3588528c6.js" crossorigin="anonymous"></script>
+</head>
+<nav class="banner"><i class="fa fa-bars" onclick="showMenu()" ></i></nav>
+<div>
+    
+</div>
+<body>  
+    <section class="header">
+            <div class="dino">
+                <a href="index.html"></a>
+            </div>
+            <div class="text-box">
+                    <a href="index.html">slopeater.com</a> 
+        </div>
+    </section> 
+    <div class="nav-links" id ="navLinks"> 
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <i class="fa fa-square"></i>
+            <i class="fa fa-square"></i>
+            <li><a href="about.html">Gallery</a></li>
+            <i class="fa fa-square"></i>
+            <i class="fa fa-square"></i>
+            <li><a href="blog.html">Projects</a></li>
+            <i class="fa fa-square"></i>
+            <i class="fa fa-square"></i>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </div>
+
+
+    <div class="projectscontent" id="idk">
+        <div class="projects"> 
+            <a href=""><img src="images/gallery.png" alt="">
+            <h1>project</h1>
+            </a>
+        </div>
+        <div class="projects"> 
+            <a href=""><img src="images/gallery.png" alt="">
+            <h1>chess-with-goblin</h1>
+            </a>
+        </div>
+        <div class="footer">
+            <div class="line"></div>
+            <p>footer</p>
+            
+    
+            </div>
+    </div>
+    <!-- -----------footer-------- -->
+   
+
+   
+  
+
+
+
+    <!-- --------------JS toggle menu -->
+    <script>
+        var navLinks=document.getElementById("navLinks");
+        let x=false;
+        // 
+        function showMenu(){
+            x= !x;
+            console.log(x)
+            if (x){
+                navLinks.style.transform="translate(-00px,0px)";
+    
+        }
+        if (x==false){
+            navLinks.style.transform="translate(-00px,-450px)";
+        }
+            
+        }
+        function hideMenu(){
+            
+        }
+
+
+    </script>
+</body>
+</html>
